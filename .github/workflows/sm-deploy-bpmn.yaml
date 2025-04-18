@@ -36,7 +36,7 @@ jobs:
 
       - name: Deploy to Zeebe
         run: |
-          curl -X POST "https://${{ secrets.ZEEBE_REST_ADDRESS }}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
+          curl -X POST "${{ secrets.ZEEBE_REST_ADDRESS }}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
 
   deploy-new-files:
     if: ${{ needs.prepare-files.outputs.matrix-added != '[]' }}
@@ -53,4 +53,4 @@ jobs:
 
       - name: Deploy to Zeebe
         run: |
-          curl -X POST "http://${{ secrets.ZEEBE_REST_ADDRESS}}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
+          curl -X POST "${{ secrets.ZEEBE_REST_ADDRESS}}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
