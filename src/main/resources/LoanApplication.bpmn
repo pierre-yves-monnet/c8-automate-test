@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1q4m02f" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.34.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
   <bpmn:process id="LoanApplication" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_1">
+    <bpmn:startEvent id="Start_ApplicationLoan">
       <bpmn:outgoing>Flow_1u63c8u</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_1u63c8u" sourceRef="StartEvent_1" targetRef="GetScore" />
+    <bpmn:sequenceFlow id="Flow_1u63c8u" sourceRef="Start_ApplicationLoan" targetRef="GetScore" />
     <bpmn:exclusiveGateway id="GatewayCheckLoanAcceptance" name="Accept loan?" default="Flow_CheckUser">
       <bpmn:incoming>Flow_0bwifqp</bpmn:incoming>
       <bpmn:outgoing>Flow_Accepted</bpmn:outgoing>
@@ -92,7 +92,7 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="LoanApplication">
-      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="Start_ApplicationLoan">
         <dc:Bounds x="182" y="162" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0x2gecx_di" bpmnElement="GatewayCheckLoanAcceptance" isMarkerVisible="true">
