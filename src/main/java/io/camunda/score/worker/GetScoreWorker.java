@@ -24,7 +24,7 @@ public class GetScoreWorker {
         // Calculate the score from the customerId
         String digitsOnly = customerId.replaceAll("\\D+", ""); // \\D = non-digit
         int score = Integer.parseInt(digitsOnly);
-        logger.info("GetScoreWorker: customerId [{}] score: {}", customerId, score);
+        logger.info("GetScoreWorker: customerId [{}] score: {} element[{}]", customerId, score, job.getElementId());
         try {
             Thread.sleep(150);
         } catch (InterruptedException e) {

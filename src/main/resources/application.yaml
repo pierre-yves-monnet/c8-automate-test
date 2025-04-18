@@ -1,6 +1,6 @@
 camunda:
   client:
-    mode: selfmanaged
+    mode: self-managed
     zeebe:
       enabled: true
       grpc-address: http://localhost:26500

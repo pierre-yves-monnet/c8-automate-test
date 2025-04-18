@@ -16,7 +16,7 @@ public class AcceptLoanWorker {
     @JobWorker(type = "accept-loan", autoComplete = false)
     public void acceptLoan(final JobClient client, final ActivatedJob job, @Variable(name = "customerId") String customerId) {
         // Calculate the score from the customerId
-        logger.info("AcceptLoan: customerId [{}]", customerId);
+        logger.info("AcceptLoan: customerId [{}] element [{}]", customerId,job.getElementId());
         try {
             Thread.sleep(270);
         } catch (InterruptedException e) {
