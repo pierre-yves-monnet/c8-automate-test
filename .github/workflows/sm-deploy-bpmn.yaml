@@ -51,15 +51,6 @@ jobs:
         with:
           files: ${{ matrix.file }}
 
-      - name: Get Bearer Toker
-        uses: fjogeleit/http-request-action@v1.16.4
-        id: zeebeBearer
-        with:
-          url: 'https://login.cloud.camunda.io/oauth/token'
-          method: 'POST'
-          customHeaders: '{"Content-Type": "application/x-www-form-urlencoded"}'
-          data: 'grant_type=client_credentials&audience=zeebe.camunda.io&client_id=${{ secrets.ZEEBE_CLIENT_ID }}&client_secret=${{ secrets.ZEEBE_CLIENT_SECRET }}'
-
       - name: Deploy to Zeebe
         run: |
-          curl -X POST "https://${{ secrets.CLUSTER_REGION }}.zeebe.camunda.io/${{ secrets.CLUSTER_ID }}/v2/deployments" -H "Authorization: Bearer ${{ fromJson(steps.zeebeBearer.outputs.response).access_token }}" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
+          curl -X POST "http://${{ secrets.ZEEBE_GRPC_ADDRESS}}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
