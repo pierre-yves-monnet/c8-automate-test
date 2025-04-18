@@ -53,4 +53,4 @@ jobs:
 
       - name: Deploy to Zeebe
         run: |
-          curl -X POST "http://${{ secrets.ZEEBE_GRPC_ADDRESS}}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
+          curl -X POST "http://${{ secrets.ZEEBE_REST_ADDRESS}}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
