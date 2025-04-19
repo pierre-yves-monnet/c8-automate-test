@@ -17,10 +17,9 @@ jobs:
       - name: Set up Kubeconfig
         run: |
           mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBECONFIG_DATA }}"
           echo "${{ secrets.KUBECONFIG_DATA }}" | base64 -d > $HOME/.kube/config
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl delete-f deployment-worker.yaml
+          kubectl delete -f deployment-worker.yaml
           kubectl apply -f deployment-worker.yaml
