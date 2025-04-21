@@ -37,5 +37,4 @@ jobs:
           gcloud container clusters get-credentials ${{ secrets.GCP_CLUSTERNAME }} --region ${{ secrets.GCP_REGION }}
       - name: Deploy to Kubernetes
         run: |
-          kubectl delete -f deployment-worker.yaml
           kubectl apply -f deployment-worker.yaml
