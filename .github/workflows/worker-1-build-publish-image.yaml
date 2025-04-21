@@ -1,4 +1,4 @@
-name: Worker-1 Build Publish Docker Image
+name: worker-1-build-publish-image
 
 on:
   push:

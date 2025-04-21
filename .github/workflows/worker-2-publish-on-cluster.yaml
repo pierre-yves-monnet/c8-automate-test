@@ -1,8 +1,8 @@
-name: Deploy In Cluster
+name: worker-2-publish_on-cluster
 
 on:
   workflow_run:
-    workflows: ["Worker-1 Build Publish Docker Image"]  # Name of the workflow to depend on
+    workflows: ["worker-1-build-publish-image"]  # Name of the workflow to depend on
     types:
       - completed
 
