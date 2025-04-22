@@ -1,10 +1,6 @@
 name: '3-pea-loadscenarii'
 
 on:
-  workflow_run:
-    workflows: ["2-worker-deploy_on-cluster"]  # Name of the workflow to depend on
-    types:
-      - completed
   push:
     paths:
       - 'src/main/resources/pea/*.json' # match '*.json' files (created or updated)
