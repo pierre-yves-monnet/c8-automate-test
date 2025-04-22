@@ -1,4 +1,4 @@
-name: 'pea-1-loadscenarii'
+name: '3-pea-loadscenarii'
 
 on:
   workflow_run:
