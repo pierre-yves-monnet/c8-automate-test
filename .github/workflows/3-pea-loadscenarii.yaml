@@ -11,10 +11,8 @@ on:
 
 
 jobs:
-  build:
-    name: 3-Deploy pea scenario - ${{ github.event.head_commit.message }}
-
   prepare-files:
+    name: 3-Deploy pea scenario - ${{ github.event.head_commit.message }}
     runs-on: ubuntu-latest
     outputs:
       matrix-added: ${{ steps.file-changes.outputs.files_added }}
