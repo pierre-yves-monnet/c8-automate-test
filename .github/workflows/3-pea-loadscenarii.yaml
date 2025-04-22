@@ -2,7 +2,7 @@ name: 'pea-1-loadscenarii'
 
 on:
   workflow_run:
-    workflows: ["worker-2-publish-on-cluster"]  # Name of the workflow to depend on
+    workflows: ["2-worker-deploy_on-cluster"]  # Name of the workflow to depend on
     types:
       - completed
   push:
@@ -11,6 +11,9 @@ on:
 
 
 jobs:
+  build:
+    name: 3-Deploy pea scenario - ${{ github.event.head_commit.message }}
+
   prepare-files:
     runs-on: ubuntu-latest
     outputs:

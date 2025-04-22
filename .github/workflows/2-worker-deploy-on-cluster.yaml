@@ -1,12 +1,15 @@
-name: worker-2-publish_on-cluster
+name: 2-worker-deploy_on-cluster
 
 on:
   workflow_run:
-    workflows: ["worker-1-build-publish-image"]  # Name of the workflow to depend on
+    workflows: ["1-worker-build-publish-image"]  # Name of the workflow to depend on
     types:
       - completed
 
 jobs:
+  build:
+    name: 2-worker-deploy - ${{ github.event.head_commit.message }}
+
   deploy:
     runs-on: ubuntu-latest
 
