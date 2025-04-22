@@ -1,9 +1,14 @@
 name: 'pea-1-loadscenarii'
 
 on:
+  workflow_run:
+    workflows: ["worker-2-publish-on-cluster"]  # Name of the workflow to depend on
+    types:
+      - completed
   push:
     paths:
       - 'src/main/resources/pea/*.json' # match '*.bpmn' files (created or updated)
+
 
 jobs:
   prepare-files:
@@ -50,6 +55,6 @@ jobs:
         with:
           files: ${{ matrix.file }}
 
-      - name: Deploy to Zeebe
+      - name: Deploy to Pea
         run: |
-          curl -X POST ${{ secrets.PEA_REST_ADDRESS}}/pea/api/content/add -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
+          curl -X POST ${{ secrets.PEA_REST_ADDRESS }}/pea/api/content/add -F "scenarioFile=@${{ github.workspace }}/${{ matrix.file }}"
