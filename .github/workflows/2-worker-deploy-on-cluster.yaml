@@ -10,7 +10,6 @@ jobs:
   build:
     name: 2-worker-deploy - ${{ github.event.head_commit.message }}
 
-  deploy:
     runs-on: ubuntu-latest
 
     steps:
