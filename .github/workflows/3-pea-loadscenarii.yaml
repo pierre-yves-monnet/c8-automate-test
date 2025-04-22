@@ -7,12 +7,11 @@ on:
       - completed
   push:
     paths:
-      - 'src/main/resources/pea/*.json' # match '*.bpmn' files (created or updated)
+      - 'src/main/resources/pea/*.json' # match '*.json' files (created or updated)
 
 
 jobs:
   prepare-files:
-    name: 3-Deploy pea scenario - ${{ github.event.head_commit.message }}
     runs-on: ubuntu-latest
     outputs:
       matrix-added: ${{ steps.file-changes.outputs.files_added }}
