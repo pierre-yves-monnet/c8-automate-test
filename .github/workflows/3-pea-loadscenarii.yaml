@@ -37,7 +37,7 @@ jobs:
 
       - name: Deploy to pea
         run: |
-          curl -X POST "${{ secrets.PEA_REST_ADDRESS }}/pea/api/content/add" -F "scenarioFile=@${{ github.workspace }}/${{ matrix.file }}"
+          curl -X POST "${{ secrets.PEA_REST_ADDRESS }}/pea/api/content/add" -F "scenarioFiles=@${{ github.workspace }}/${{ matrix.file }}"
 
   deploy-new-files:
     if: ${{ needs.prepare-files.outputs.matrix-added != '[]' }}
