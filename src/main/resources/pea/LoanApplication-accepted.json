@@ -7,7 +7,7 @@
     {
       "name": "Accepted",
       "policy": "STOPATFIRSTERROR",
-      "description" : "Execute an application which is accepted #13",
+      "description" : "Execute an application which is accepted",
       "numberProcessInstances": 1,
       "numberOfThreads": 1,
       "steps": [
