@@ -31,7 +31,7 @@ jobs:
 
       - name: Echo file
         run: |
-          echo ${{ matrix.file }} # to test if the correct file was passed
+          echo ${{ matrix.file }} to server ${{ secrets.ZEEBE_REST_ADDRESS }} # to test if the correct file was passed
 
 
       - name: Deploy to Zeebe
@@ -50,6 +50,10 @@ jobs:
         uses: Bhacaz/checkout-files@v2
         with:
           files: ${{ matrix.file }}
+
+      - name: Echo file
+        run: |
+          echo ${{ matrix.file }} to server ${{ secrets.ZEEBE_REST_ADDRESS }} # to test if the correct file was passed
 
       - name: Deploy to Zeebe
         run: |
