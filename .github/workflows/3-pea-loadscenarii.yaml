@@ -37,7 +37,7 @@ jobs:
 
       - name: Deploy to pea
         run: |
-          curl -X POST "${{ secrets.PEA_REST_ADDRESS }}/api/content/add" -F "scenarioFile=@${{ github.workspace }}/${{ matrix.file }}"
+          curl -X POST "${{ secrets.PEA_REST_ADDRESS }}/pea/api/content/add" -F "scenarioFile=@${{ github.workspace }}/${{ matrix.file }}"
 
   deploy-new-files:
     if: ${{ needs.prepare-files.outputs.matrix-added != '[]' }}
@@ -51,6 +51,10 @@ jobs:
         uses: Bhacaz/checkout-files@v2
         with:
           files: ${{ matrix.file }}
+
+      - name: Echo file
+        run: |
+          echo ${{ matrix.file }} # to test if the correct file was passed
 
       - name: Deploy to Pea
         run: |
