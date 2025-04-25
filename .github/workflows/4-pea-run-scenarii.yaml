@@ -10,14 +10,14 @@ on:
       - completed
 
 jobs:
-  deploy-modified-files:
+  execute-test:
     runs-on: ubuntu-latest
     steps:
 
       - name: run all scenarii
         run: |
           curl -X POST "${{ secrets.PEA_REST_ADDRESS }}/api/unittest/runall?wait=true"
-          STATUS=$(curl -s -o response.txt -w "%{http_code}" -X POST "${{ secrets.PEA_REST_ADDRESS }}/api/unittest/runall?wait=true&failonerror=true"
+          STATUS=$(curl -s -o response.txt -w "%{http_code}" -X POST "${{ secrets.PEA_REST_ADDRESS }}/api/unittest/runall?wait=true&failonerror=true&server=Camunda8Topaz"
           echo "HTTP Status: $STATUS"
           
           if [[ "$STATUS" -ge 400 ]]; then
