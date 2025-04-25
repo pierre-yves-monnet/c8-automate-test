@@ -32,8 +32,11 @@ jobs:
       - name: Echo file
         run: |
           echo "ZEEBE_REST_ADDRESS=${{ secrets.ZEEBE_REST_ADDRESS }}" >> $GITHUB_ENV
-          echo ${{ matrix.file }} to server $ZEEBE_REST_ADDRESS # to test if the correct file was passed
+          cat $GITHUB_ENV
 
+      - name: Use Zeebe Address in a script
+        run: |
+          echo ${{ matrix.file }} to server $ZEEBE_REST_ADDRESS # to test if the correct file was passed
 
       - name: Deploy to Zeebe
         run: |
@@ -55,6 +58,10 @@ jobs:
       - name: Echo file
         run: |
           echo "ZEEBE_REST_ADDRESS=${{ secrets.ZEEBE_REST_ADDRESS }}" >> $GITHUB_ENV
+          cat $GITHUB_ENV
+
+      - name: Use Zeebe Address in a script
+        run: |
           echo ${{ matrix.file }} to server $ZEEBE_REST_ADDRESS # to test if the correct file was passed
 
       - name: Deploy to Zeebe
