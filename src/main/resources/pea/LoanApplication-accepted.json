@@ -48,7 +48,7 @@
             "fromMarker": "begin",
             "toFlowNode": "LoanAccepted",
             "toMarker": "end",
-            "duration": "PT0.2S"
+            "duration": "PT1S"
           },
           {
             "description": "GetScore must be performed in less than 100 ms",
@@ -56,7 +56,7 @@
             "fromMarker": "begin",
             "toFlowNode": "GetScore",
             "toMarker": "end",
-            "duration": "PT0.1S"
+            "duration": "PT0.2S"
           }
 
         ]

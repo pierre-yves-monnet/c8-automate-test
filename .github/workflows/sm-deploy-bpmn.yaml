@@ -1,4 +1,4 @@
-name: 'Deploy updated BPMNs to Zeebe'
+name: 'sm-deploy-bpmn'
 
 on:
   push:
