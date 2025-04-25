@@ -7,6 +7,7 @@
     {
       "name": "Accepted",
       "policy": "STOPATFIRSTERROR",
+      "description" : "Execute an application which is accepted",
       "numberProcessInstances": 1,
       "numberOfThreads": 1,
       "steps": [
@@ -43,7 +44,7 @@
         ],
         "performances": [
           {
-            "description": "From getScore to the End Event, less than 1 second",
+            "description": "From getScore to the End Event, less than 1 second ",
             "fromFlowNode": "GetScore",
             "fromMarker": "begin",
             "toFlowNode": "LoanAccepted",
