@@ -13,7 +13,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0bwifqp" sourceRef="GetScore" targetRef="GatewayCheckLoanAcceptance" />
     <bpmn:sequenceFlow id="Flow_Accepted" name="score &#62;800" sourceRef="GatewayCheckLoanAcceptance" targetRef="AcceptLoan">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=score &gt; 800</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=score &gt; 2800</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="LoanAccepted" name="accepted">
       <bpmn:incoming>Flow_0fikvcg</bpmn:incoming>
@@ -107,6 +107,9 @@
           <dc:Bounds x="879" y="205" width="45" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0dh9fik_di" bpmnElement="Gateway_0dh9fik" isMarkerVisible="true">
+        <dc:Bounds x="685" y="245" width="50" height="50" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_00b63ln_di" bpmnElement="LoanRejected">
         <dc:Bounds x="892" y="372" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -129,18 +132,15 @@
           <dc:Bounds x="202" y="102" width="57" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1e44p43_di" bpmnElement="CheckManualLoan">
+        <dc:Bounds x="530" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_14qorc6_di" bpmnElement="AcceptLoan">
         <dc:Bounds x="740" y="140" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_06dmblc_di" bpmnElement="RejectLoan">
         <dc:Bounds x="740" y="350" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0dh9fik_di" bpmnElement="Gateway_0dh9fik" isMarkerVisible="true">
-        <dc:Bounds x="685" y="245" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1e44p43_di" bpmnElement="CheckManualLoan">
-        <dc:Bounds x="530" y="230" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0lowv1n_di" bpmnElement="Activity_1nntsk6" isExpanded="true">
         <dc:Bounds x="970" y="280" width="350" height="200" />
