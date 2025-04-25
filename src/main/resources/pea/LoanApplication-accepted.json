@@ -43,7 +43,7 @@
         ],
         "performances": [
           {
-            "description": "From get Score to the End Event, less than 1 second",
+            "description": "From getScore to the End Event, less than 1 second",
             "fromFlowNode": "GetScore",
             "fromMarker": "begin",
             "toFlowNode": "LoanAccepted",
