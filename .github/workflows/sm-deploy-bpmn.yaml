@@ -31,8 +31,9 @@ jobs:
 
       - name: Display files to deploy
         run: |
-          echo file[${{ matrix.file }}] from workspace[${{ github.workspace }}} to server[${{ secrets.ZEEBE_REST_ADDRESS }}] # to verify if the correct file was passed
-          echo trick  ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g'
+          echo file[${{ matrix.file }}] from workspace[${{ github.workspace }}] to server[${{ secrets.ZEEBE_REST_ADDRESS }}] # to verify if the correct file was passed
+          echo trick_2  ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g'
+          ls ${{ github.workspace }}/${{ matrix.file }}
 
       - name: Deploy to Zeebe
         run: |
