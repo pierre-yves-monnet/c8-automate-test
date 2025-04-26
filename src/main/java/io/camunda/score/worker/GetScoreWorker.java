@@ -26,11 +26,10 @@ public class GetScoreWorker {
         int score = Integer.parseInt(digitsOnly);
         logger.info("GetScoreWorker: customerId [{}] score: {} element[{}]", customerId, score, job.getElementId());
         try {
-            Thread.sleep(150);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             logger.error("Ask to interrupt the sleep");
             Thread.currentThread().interrupt();
-
         }
 
         client.newCompleteCommand(job.getKey())
