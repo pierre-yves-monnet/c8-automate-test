@@ -31,6 +31,8 @@ jobs:
 
       - name: Echo file
         run: |
+          echo "::add-mask::fake"  # Overwrite the masked value to something safe
+
           echo "ZEEBE_REST_ADDRESS=${{ secrets.ZEEBE_REST_ADDRESS }}" >> $GITHUB_ENV
           cat $GITHUB_ENV
 
