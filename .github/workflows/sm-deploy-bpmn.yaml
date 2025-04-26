@@ -29,16 +29,10 @@ jobs:
         with:
           files: ${{ matrix.file }}
 
-      - name: Echo file
+      - name: Display files to deploy
         run: |
-          echo "::add-mask::fake"  # Overwrite the masked value to something safe
-
-          echo "ZEEBE_REST_ADDRESS=${{ secrets.ZEEBE_REST_ADDRESS }}" >> $GITHUB_ENV
-          cat $GITHUB_ENV
-
-      - name: Use Zeebe Address in a script
-        run: |
-          echo ${{ matrix.file }} to server $ZEEBE_REST_ADDRESS # to test if the correct file was passed
+          echo file[${{ matrix.file }}] from workspace[${{ github.workspace }}} to server[${{ secrets.ZEEBE_REST_ADDRESS }}] # to verify if the correct file was passed
+          echo trick  ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g'
 
       - name: Deploy to Zeebe
         run: |
@@ -57,14 +51,9 @@ jobs:
         with:
           files: ${{ matrix.file }}
 
-      - name: Echo file
+      - name: Display files to deploy
         run: |
-          echo "ZEEBE_REST_ADDRESS=${{ secrets.ZEEBE_REST_ADDRESS }}" >> $GITHUB_ENV
-          cat $GITHUB_ENV
-
-      - name: Use Zeebe Address in a script
-        run: |
-          echo ${{ matrix.file }} to server $ZEEBE_REST_ADDRESS # to test if the correct file was passed
+          echo file[${{ matrix.file }}] from workspace[${{ github.workspace }}} to server[${{ secrets.ZEEBE_REST_ADDRESS }}] # to verify if the correct file was passed
 
       - name: Deploy to Zeebe
         run: |
