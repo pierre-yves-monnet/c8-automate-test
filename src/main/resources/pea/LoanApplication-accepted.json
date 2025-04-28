@@ -76,7 +76,7 @@
           "type": "STARTEVENT",
           "taskId": "StartEvent",
           "processId": "LoanApplication",
-          "variables": {"customerId": "Customer889"}
+          "variables": {"customerId": "Customer123"}
         }
       ],
       "verifications": {
