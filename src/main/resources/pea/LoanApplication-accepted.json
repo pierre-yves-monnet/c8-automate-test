@@ -7,7 +7,7 @@
     {
       "name": "Loan Accepted",
       "policy": "STOPATFIRSTERROR",
-      "description" : "Execute an application which is accepted",
+      "description" : "Accepted application",
       "numberProcessInstances": 1,
       "numberOfThreads": 1,
       "steps": [
@@ -67,7 +67,7 @@
     {
       "name": "Loan Rejected",
       "policy": "STOPATFIRSTERROR",
-      "description" : "Execute an application which is accepted",
+      "description" : "Rejected application",
       "numberProcessInstances": 1,
       "numberOfThreads": 1,
       "steps": [
@@ -76,7 +76,7 @@
           "type": "STARTEVENT",
           "taskId": "StartEvent",
           "processId": "LoanApplication",
-          "variables": {"customerId": "Customer123"}
+          "variables": {"customerId": "Customer34"}
         }
       ],
       "verifications": {
