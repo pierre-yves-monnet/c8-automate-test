@@ -22,18 +22,21 @@ public class GetScoreWorker {
     @JobWorker(type = "get-score", autoComplete = false)
     public void getScore(final JobClient client, final ActivatedJob job, @Variable(name = "customerId") String customerId) {
         // Calculate the score from the customerId
+        long beginTime = System.currentTimeMillis();
         String digitsOnly = customerId.replaceAll("\\D+", ""); // \\D = non-digit
         int score = Integer.parseInt(digitsOnly);
-        logger.info("GetScoreWorker: customerId [{}] score: {} element[{}]", customerId, score, job.getElementId());
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             logger.error("Ask to interrupt the sleep");
             Thread.currentThread().interrupt();
         }
-
+        long endTime = System.currentTimeMillis();
+        logger.info("GetScoreWorker: customerId [{}] score: {} element[{}] executionTime: {} ms", customerId, score, job.getElementId(), endTime - beginTime);
         client.newCompleteCommand(job.getKey())
-                .variables(Map.of("score", score))
+                .variables(Map.of("score", score,
+                        "executionTime", endTime - beginTime))
                 .send().join();
     }
 
