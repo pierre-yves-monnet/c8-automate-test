@@ -46,24 +46,3 @@ jobs:
         run: |
           curl -X POST "${{ secrets.ZEEBE_REST_ADDRESS }}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
 
-  deploy-new-files:
-    if: ${{ needs.prepare-files.outputs.matrix-added != '[]' }}
-    needs: [prepare-files]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        file: ${{ fromJSON(needs.prepare-files.outputs.matrix-added) }}
-    steps:
-      - name: Check Out Reference File
-        uses: Bhacaz/checkout-files@v2
-        with:
-          files: ${{ matrix.file }}
-
-      - name: Display files to deploy
-        run: |
-          echo file[${{ matrix.file }}] from workspace[${{ github.workspace }}} to server[${{ secrets.ZEEBE_REST_ADDRESS }}] # to verify if the correct file was passed
-
-
-      - name: Deploy to Zeebe
-        run: |
-          curl -X POST "${{ secrets.ZEEBE_REST_ADDRESS }}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
