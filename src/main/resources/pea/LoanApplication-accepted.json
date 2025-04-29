@@ -5,7 +5,7 @@
   "typeScenario": "UNIT",
   "executions": [
     {
-      "name": "Loan Accepted",
+      "name": "Loan accepted",
       "policy": "STOPATFIRSTERROR",
       "description" : "Accepted application",
       "numberProcessInstances": 1,
@@ -65,7 +65,7 @@
     },
 
     {
-      "name": "Loan Rejected",
+      "name": "Loan rejected",
       "policy": "STOPATFIRSTERROR",
       "description" : "Rejected application",
       "numberProcessInstances": 1,
