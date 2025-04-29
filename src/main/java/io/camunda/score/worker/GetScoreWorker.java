@@ -26,7 +26,7 @@ public class GetScoreWorker {
         int score = Integer.parseInt(digitsOnly);
         logger.info("GetScoreWorker: customerId [{}] score: {} element[{}]", customerId, score, job.getElementId());
         try {
-            Thread.sleep(5);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             logger.error("Ask to interrupt the sleep");
             Thread.currentThread().interrupt();
