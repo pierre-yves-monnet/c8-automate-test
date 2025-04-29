@@ -13,7 +13,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0bwifqp" sourceRef="GetScore" targetRef="GatewayCheckLoanAcceptance" />
     <bpmn:sequenceFlow id="Flow_Accepted" name="score &#62;800" sourceRef="GatewayCheckLoanAcceptance" targetRef="AcceptLoan">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=score &gt; 2800</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=score &gt; 800</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="LoanAccepted" name="accepted">
       <bpmn:incoming>Flow_0fikvcg</bpmn:incoming>
