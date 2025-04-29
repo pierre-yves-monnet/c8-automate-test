@@ -3,9 +3,9 @@ name: 'sm-deploy-bpmn'
 on:
   push:
     paths:
-      - `src/main/resources/*.bpmn`
-      - `src/main/resources/*.dmn`
-      - `src/main/resources/*.form`
+      - 'src/main/resources/*.bpmn'
+      - 'src/main/resources/*.dmn'
+      - 'src/main/resources/*.form'
 
 
 jobs:
