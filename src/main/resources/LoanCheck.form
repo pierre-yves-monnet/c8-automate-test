@@ -37,7 +37,7 @@
       "type": "radio",
       "layout": {
         "row": "Row_1n2lk8p",
-        "columns": null
+        "columns": 15
       },
       "id": "Field_1yamc30",
       "key": "acceptLoan"
