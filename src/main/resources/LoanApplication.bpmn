@@ -12,8 +12,8 @@
       <bpmn:outgoing>Flow_Rejected</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0bwifqp" sourceRef="GetScore" targetRef="GatewayCheckLoanAcceptance" />
-    <bpmn:sequenceFlow id="Flow_Accepted" name="score &#62;2800" sourceRef="GatewayCheckLoanAcceptance" targetRef="AcceptLoan">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=score &gt; 2800</bpmn:conditionExpression>
+    <bpmn:sequenceFlow id="Flow_Accepted" name="score &#62;800" sourceRef="GatewayCheckLoanAcceptance" targetRef="AcceptLoan">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=score &gt; 800</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="LoanAccepted" name="accepted">
       <bpmn:incoming>Flow_0fikvcg</bpmn:incoming>
@@ -171,7 +171,7 @@
         <di:waypoint x="475" y="180" />
         <di:waypoint x="740" y="180" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="479" y="163" width="61" height="14" />
+          <dc:Bounds x="522" y="153" width="55" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0fikvcg_di" bpmnElement="Flow_0fikvcg">
