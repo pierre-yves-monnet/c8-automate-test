@@ -27,13 +27,13 @@ public class GetScoreWorker {
         int score = Integer.parseInt(digitsOnly);
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(51);
         } catch (InterruptedException e) {
             logger.error("Ask to interrupt the sleep");
             Thread.currentThread().interrupt();
         }
         long endTime = System.currentTimeMillis();
-        logger.info("GetScoreWorker.2001: customerId [{}] score: {} element[{}] executionTime: {} ms", customerId, score, job.getElementId(), endTime - beginTime);
+        logger.info("GetScoreWorker: customerId [{}] score: {} element[{}] executionTime: {} ms", customerId, score, job.getElementId(), endTime - beginTime);
         client.newCompleteCommand(job.getKey())
                 .variables(Map.of("score", score,
                         "executionTime", endTime - beginTime))
