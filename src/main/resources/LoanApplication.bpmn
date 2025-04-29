@@ -56,6 +56,7 @@
     <bpmn:userTask id="CheckManualLoan" name="Check Loan">
       <bpmn:extensionElements>
         <zeebe:formDefinition formId="LoanCheck" />
+        <zeebe:assignmentDefinition candidateGroups="loanChecker" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_CheckUser</bpmn:incoming>
       <bpmn:outgoing>Flow_1yjboy3</bpmn:outgoing>
