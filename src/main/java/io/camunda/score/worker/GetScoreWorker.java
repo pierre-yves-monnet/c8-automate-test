@@ -27,7 +27,7 @@ public class GetScoreWorker {
         int score = Integer.parseInt(digitsOnly);
 
         try {
-            Thread.sleep(2001);
+            Thread.sleep(50);
         } catch (InterruptedException e) {
             logger.error("Ask to interrupt the sleep");
             Thread.currentThread().interrupt();
