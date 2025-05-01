@@ -21,8 +21,8 @@ jobs:
           statuses: added|modified
           format: 'json'
           patterns: |
-            src/main/resources/pea/*.{json}
-            src/test/resources/pea/*.{json}
+            src/main/resources/pea/*.json
+
       - name: Debug output - print modified files
         run: |
           echo "Modified files: ${{ steps.file-changes.outputs.files }}"
