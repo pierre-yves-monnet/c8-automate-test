@@ -10,7 +10,7 @@
       "description" : "Accepted application",
       "numberProcessInstances": 1,
       "numberOfThreads": 1,
-      "waitForOperateImport": 16,
+      "waitForOperateImport": 15,
       "steps": [
         {
           "name": "Start event",
