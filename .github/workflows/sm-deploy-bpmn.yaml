@@ -49,9 +49,10 @@ jobs:
           echo "ClientId:" ${{secrets.ZEEBE_CLIENT_ID}} | sed 's/./& /g' 
           secretDisplay=$(echo "${{ secrets.ZEEBE_CLIENT_SECRET }}" | sed -n 's/^\(...\).*/\1/p')
           echo "ClientSecret:" $secretDisplay            
-          token=$(curl -s ""${{ secrets.OAUTH_TOKEN_URL }}"" --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode "client_id=${{ secrets.ZEEBE_CLIENT_ID}}" --data-urlencode "client_secret=${{ secrets.ZEEBE_CLIENT_SECRET }}" --data-urlencode 'audience=zeebe.camunda.io' | jq -r '.access_token')
+          token=$(curl -s ""${{ secrets.OAUTH_TOKEN_URL }}"" --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode "client_id=${{ secrets.ZEEBE_CLIENT_ID }}" --data-urlencode "client_secret=${{ secrets.ZEEBE_CLIENT_SECRET }}" --data-urlencode 'audience=zeebe.camunda.io' | jq -r '.access_token')
           tokenDisplay=$(echo $token | sed -n 's/^\(...........\).*/\1/p') 
           echo "Token:" $tokenDisplay
+          echo "token=$token" >> $GITHUB_OUTPUT
 
       - name: Deploy to Zeebe
         id: deploy-to-zeebe

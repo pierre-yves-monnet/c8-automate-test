@@ -1,5 +1,10 @@
 name: '3-pea-loadscenarii'
 
+on:
+  push:
+    paths:
+      - 'src/main/**'
+
 # on:
 #  push:
 #    paths:
