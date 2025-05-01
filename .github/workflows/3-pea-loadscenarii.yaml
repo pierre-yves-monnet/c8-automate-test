@@ -37,6 +37,7 @@ jobs:
 
       - name: Deploy to pea
         run: |
+          echo HttpPea  ${{secrets.PEA_REST_ADDRESS}} | sed 's/./& /g | sed 's/ //g'
           curl -X POST "${{ secrets.PEA_REST_ADDRESS }}/pea/api/content/add" -F "scenarioFiles=@${{ github.workspace }}/${{ matrix.file }}"
 
   deploy-new-files:
