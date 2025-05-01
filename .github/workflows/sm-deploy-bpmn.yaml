@@ -60,7 +60,7 @@ jobs:
       - name: Deploy to Zeebe
         run: |
           echo "Server:" ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g' 
-          STATUS=$(curl -s -o response.txt -w "%{http_code}" -X POST "${{ secrets.ZEEBE_REST_ADDRESS }}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
+          STATUS=$(curl -s -o response.txt -w "%{http_code}" -X POST "${{ secrets.ZEEBE_REST_ADDRESS }}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}")
           echo "HTTP Status: $STATUS"
           
           if [[ "$STATUS" -ge 400 ]]; then
