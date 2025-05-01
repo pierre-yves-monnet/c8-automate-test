@@ -23,8 +23,11 @@ jobs:
           patterns: |
             src/main/resources/pea/*.{json}
             src/test/resources/pea/*.{json}
+      - name: Debug output - print modified files
+        run: |
+          echo "Modified files: ${{ steps.file-changes.outputs.files }}"
 
-  deploy-modified-files:
+  deploy-files:
     if: ${{ needs.prepare-files.outputs.matrix-modified != '[]' }}
     needs: [ prepare-files ]
     runs-on: ubuntu-latest
@@ -47,24 +50,3 @@ jobs:
         run: |
           echo HttpPea  ${{secrets.PEA_REST_ADDRESS}} | sed 's/./& /g' | | tr -d ' '
           curl -X POST "${{ secrets.PEA_REST_ADDRESS }}/pea/api/content/add" -F "scenarioFiles=@${{ github.workspace }}/${{ matrix.file }}"
-
-  deploy-new-files:
-    if: ${{ needs.prepare-files.outputs.matrix-added != '[]' }}
-    needs: [prepare-files]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        file: ${{ fromJSON(needs.prepare-files.outputs.matrix-added) }}
-    steps:
-      - name: Check Out Reference File
-        uses: Bhacaz/checkout-files@v2
-        with:
-          files: ${{ matrix.file }}
-
-      - name: Echo file
-        run: |
-          echo ${{ matrix.file }} # to test if the correct file was passed
-
-      - name: Deploy to Pea
-        run: |
-          curl -X POST ${{ secrets.PEA_REST_ADDRESS }}/pea/api/content/add -F "scenarioFile=@${{ github.workspace }}/${{ matrix.file }}"
