@@ -61,7 +61,7 @@ jobs:
       - name: Deploy to Zeebe
         run: |
           echo ToServer  ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g'
-          echo "ToServer [" ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g' "]"
-          echo ToServer 2  ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g' | tr -d ' '
+          echo "ToServer : " ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g' | tr -d ' '
+
           curl -X POST "${{ secrets.ZEEBE_REST_ADDRESS }}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
 

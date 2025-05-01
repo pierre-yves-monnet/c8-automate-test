@@ -13,9 +13,9 @@ jobs:
 
       - name: run all scenarii
         run: |
-          echo RunScenari on server  ${{secrets.PEA_REST_ADDRESS}} | sed 's/./& /g'
+
           echo RunScenari on server-2  ${{secrets.PEA_REST_ADDRESS}} | sed 's/./& /g' | tr -d ' '
-          echo RunScenari on server-3 [  ${{secrets.PEA_REST_ADDRESS}} | sed 's/./& /g' | tr -d ' ' ]
+          echo "RunScenari on server : " ${{secrets.PEA_REST_ADDRESS}} | sed 's/./& /g' | tr -d ' ' 
           
           STATUS=$(curl -s -o response.txt -w "%{http_code}" -X POST "${{ secrets.PEA_REST_ADDRESS }}/pea/api/unittest/runall?wait=true&failonerror=true&server=Camunda8Topaz")
           echo "HTTP Status: $STATUS"
