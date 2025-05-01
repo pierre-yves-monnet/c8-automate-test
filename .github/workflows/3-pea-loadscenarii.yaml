@@ -1,10 +1,10 @@
 name: '3-pea-loadscenarii'
 
-on:
-  push:
-    paths:
-      - 'src/main/resources/pea/*.json' # match '*.json' files (created or updated)
-      - 'src/test/resources/pea/*.json' # match '*.json' files (created or updated)
+# on:
+#  push:
+#    paths:
+#      - 'src/main/resources/pea/*.json' # match '*.json' files (created or updated)
+#      - 'src/test/resources/pea/*.json' # match '*.json' files (created or updated)
 
 
 jobs:

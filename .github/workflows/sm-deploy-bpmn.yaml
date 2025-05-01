@@ -47,17 +47,17 @@ jobs:
         run: |
           echo "TokenURL:" ${{secrets.OAUTH_TOKEN_URL}} | sed 's/./& /g' 
           echo "ClientId:" ${{secrets.ZEEBE_CLIENT_ID}} | sed 's/./& /g' 
-          secretDisplay=${{secrets.ZEEBE_CLIENT_SECRET}} | sed -n 's/^\(...\).*/\1/p'
+          secretDisplay=$(echo "${{ secrets.ZEEBE_CLIENT_SECRET }}" | sed -n 's/^\(...\).*/\1/p')
           echo "ClientSecret:" $secretDisplay            
           token=$(curl -s ""${{ secrets.OAUTH_TOKEN_URL }}"" --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode "client_id=${{ secrets.ZEEBE_CLIENT_ID}}" --data-urlencode "client_secret=${{ secrets.ZEEBE_CLIENT_SECRET }}" --data-urlencode 'audience=zeebe.camunda.io' | jq -r '.access_token')
-          echo $token
-          echo "Token:" token | sed -n 's/^\(...........\).*/\1/p'
+          tokenDisplay=$(echo $token | sed -n 's/^\(...........\).*/\1/p') 
+          echo "Token:" $tokenDisplay
 
       - name: Deploy to Zeebe
         id: deploy-to-zeebe
         run: |
                echo "Server:" ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g' 
-               STATUS=$(curl -s -o response.txt -w "%{http_code}" -X POST "${{ secrets.ZEEBE_REST_ADDRESS }}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}")
+               STATUS=$(curl -s -o response.txt -w "%{http_code}" -X POST "${{ secrets.ZEEBE_REST_ADDRESS }}/v2/deployments" -H "Authorization: Bearer ${{ steps.get-bearer-token.outputs.token }}"  -F "resources=@${{ github.workspace }}/${{ matrix.file }}")
                echo "HTTP Status: $STATUS"
                
                if [[ "$STATUS" -ge 400 ]]; then
