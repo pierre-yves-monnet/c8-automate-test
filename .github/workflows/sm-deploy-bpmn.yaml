@@ -39,7 +39,7 @@ jobs:
       - name: Display files to deploy
         run: |
           echo file[${{ matrix.file }}] from workspace[${{ github.workspace }}] to server[${{ secrets.ZEEBE_REST_ADDRESS }}] # to verify if the correct file was passed
-          echo HttpZeebe  ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g | sed 's/ //g'
+          echo HttpZeebe  ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g' | tr -d ' '
           ls -al ${{ github.workspace }}/${{ matrix.file }}
 
 # cluster with Identity + Client Secret/ClientID
