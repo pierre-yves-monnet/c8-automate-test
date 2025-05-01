@@ -22,6 +22,7 @@ jobs:
           format: 'json'
           patterns: |
             src/main/resources/pea/*.json
+            src/test/resources/pea/*.json
 
       - name: Debug output - print modified files
         run: |
@@ -48,5 +49,5 @@ jobs:
 
       - name: Deploy to pea
         run: |
-          echo HttpPea  ${{secrets.PEA_REST_ADDRESS}} | sed 's/./& /g' | | tr -d ' '
+          echo HttpPea  ${{secrets.PEA_REST_ADDRESS}} | sed 's/./& /g' | tr -d ' '
           curl -X POST "${{ secrets.PEA_REST_ADDRESS }}/pea/api/content/add" -F "scenarioFiles=@${{ github.workspace }}/${{ matrix.file }}"
