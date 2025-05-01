@@ -38,8 +38,7 @@ jobs:
 
       - name: Display files to deploy
         run: |
-          echo file[${{ matrix.file }}] from workspace[${{ github.workspace }}] # to verify if the correct file was passed
-          echo HttpZeebe  ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g' | tr -d ' '
+          echo file[${{ matrix.file }}] from workspace[${{ github.workspace }}] # to verify if the correct file was passed          
           ls -al ${{ github.workspace }}/${{ matrix.file }}
 
 # cluster with Identity + Client Secret/ClientID
@@ -60,8 +59,12 @@ jobs:
  # Cluster with no Identity or no ClientSecret/ClientID
       - name: Deploy to Zeebe
         run: |
-          echo ToServer  ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g'
-          echo "ToServer : " ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g' | tr -d ' '
-
-          curl -X POST "${{ secrets.ZEEBE_REST_ADDRESS }}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
-
+          echo "Server:" ${{secrets.ZEEBE_REST_ADDRESS}} | sed 's/./& /g' 
+          STATUS=$(curl -s -o response.txt -w "%{http_code}" -X POST "${{ secrets.ZEEBE_REST_ADDRESS }}/v2/deployments" -F "resources=@${{ github.workspace }}/${{ matrix.file }}"
+          echo "HTTP Status: $STATUS"
+          
+          if [[ "$STATUS" -ge 400 ]]; then
+            echo "❌ API call failed with status $STATUS"
+            cat response.txt
+            exit 1
+          fi
