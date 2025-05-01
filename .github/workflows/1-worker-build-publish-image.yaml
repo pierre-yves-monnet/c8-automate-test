@@ -3,6 +3,9 @@ name: 1-worker-build-publish-image
 on:
   push:
     branches: [ "main" ]  # or your branch name
+    paths:
+      - 'src/main/**'
+      - 'pom.xml'
 
 jobs:
   build:
