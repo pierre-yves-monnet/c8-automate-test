@@ -43,7 +43,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f deployment-worker.yaml -n camunda
-          DEPLOYMENT_NAME=$(yq '.metadata.name' deployment-worker.yaml | tr -d '"')
+          kubectl apply -f k8s/deployment-worker.yaml -n camunda
+          DEPLOYMENT_NAME=$(yq '.metadata.name' k8s/deployment-worker.yaml | tr -d '"')
           echo "Deployment detected [$DEPLOYMENT_NAME]"
           kubectl rollout restart deployment "$DEPLOYMENT_NAME" -n camunda
