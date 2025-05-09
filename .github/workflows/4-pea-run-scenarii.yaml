@@ -14,7 +14,7 @@ jobs:
       - name: run all scenarii
         run: |
           echo "Server:" ${{secrets.PEA_REST_ADDRESS}} | sed 's/./& /g'  
-          STATUS=$(curl -s -o response.txt -w "%{http_code}" -X POST "${{ secrets.PEA_REST_ADDRESS }}/pea/api/unittest/runall?wait=true&failonerror=true&server=Camunda8Topaz")
+          STATUS=$(curl -s -o response.txt -w "%{http_code}" -X POST "${{ secrets.PEA_REST_ADDRESS }}/pea/api/unittest/runall?wait=true&failonerror=true")
           echo "HTTP Status: $STATUS"
           
           if [[ "$STATUS" -ge 400 ]]; then
